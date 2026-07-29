@@ -1,14 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
-
-const links = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/products", label: "Products" },
-  { to: "/gallery", label: "Gallery" },
-  { to: "/contact", label: "Contact" },
-] as const;
+import { company, navLinks as links, ctaLabels } from "@/content/site";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -41,10 +34,10 @@ export function Navbar() {
             </div>
             <div className="leading-tight">
               <div className={`font-bold text-lg tracking-tight ${scrolled ? "text-ocean" : "text-white"}`}>
-                Aqua Zone
+                {company.brandName}
               </div>
               <div className={`text-[10px] uppercase tracking-[0.2em] ${scrolled ? "text-muted-foreground" : "text-white/80"}`}>
-                Pool Materials
+                {company.brandSub}
               </div>
             </div>
           </Link>
@@ -72,16 +65,16 @@ export function Navbar() {
 
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="tel:+97140000000"
+              href={company.phoneHref}
               className={`flex items-center gap-2 text-sm font-medium ${scrolled ? "text-ocean" : "text-white"}`}
             >
-              <Phone className="h-4 w-4" /> +971 4 000 0000
+              <Phone className="h-4 w-4" /> {company.phoneDisplay}
             </a>
             <Link
               to="/contact"
               className="rounded-full bg-gradient-water text-white text-sm font-semibold px-5 py-2.5 shadow-water hover:opacity-95 transition"
             >
-              Get a Quote
+              {ctaLabels.quote}
             </Link>
           </div>
 
@@ -111,7 +104,7 @@ export function Navbar() {
               to="/contact"
               className="mt-2 text-center rounded-full bg-gradient-water text-white font-semibold px-5 py-3"
             >
-              Get a Quote
+              {ctaLabels.quote}
             </Link>
           </div>
         </div>
