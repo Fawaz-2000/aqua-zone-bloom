@@ -3,14 +3,7 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import { SiteLayout } from "@/components/site/Layout";
 import { PageHero } from "@/components/site/PageHero";
-import g1 from "@/assets/gallery-1.jpg";
-import g2 from "@/assets/gallery-2.jpg";
-import g3 from "@/assets/gallery-3.jpg";
-import g4 from "@/assets/gallery-4.jpg";
-import g5 from "@/assets/gallery-5.jpg";
-import g6 from "@/assets/gallery-6.jpg";
-import hero from "@/assets/hero-pool.jpg";
-import eq from "@/assets/equipment.jpg";
+import { gallery } from "@/content/site";
 
 export const Route = createFileRoute("/gallery")({
   component: Gallery,
@@ -26,26 +19,13 @@ export const Route = createFileRoute("/gallery")({
   }),
 });
 
-const images = [
-  { src: hero, alt: "Luxury infinity pool" },
-  { src: g1, alt: "Villa pool aerial view" },
-  { src: g2, alt: "Underwater lighting" },
-  { src: g3, alt: "Rooftop infinity pool" },
-  { src: eq, alt: "Equipment installation" },
-  { src: g4, alt: "Crystal clear water" },
-  { src: g5, alt: "Modern residential pool" },
-  { src: g6, alt: "Premium mosaic tiles" },
-];
-
 function Gallery() {
   const [active, setActive] = useState<number | null>(null);
+  const images = gallery.images;
+
   return (
     <SiteLayout>
-      <PageHero
-        eyebrow="Gallery"
-        title="Projects & Installations"
-        subtitle="A selection of pools and equipment installations from across the United Arab Emirates."
-      />
+      <PageHero {...gallery.hero} />
 
       <section className="py-24 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
