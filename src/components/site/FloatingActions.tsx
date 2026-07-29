@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowUp, Phone } from "lucide-react";
+import { company } from "@/content/site";
 
 export function FloatingActions() {
   const [visible, setVisible] = useState(false);
@@ -12,7 +13,7 @@ export function FloatingActions() {
   return (
     <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
       <a
-        href="https://wa.me/971500000000"
+        href={company.whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp"
@@ -24,7 +25,7 @@ export function FloatingActions() {
         </svg>
       </a>
       <a
-        href="tel:+97140000000"
+        href={company.phoneHref}
         aria-label="Call"
         className="h-14 w-14 rounded-full bg-gradient-water shadow-water grid place-items-center hover:scale-110 transition"
       >
